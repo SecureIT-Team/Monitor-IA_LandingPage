@@ -1,0 +1,28 @@
+# Dependencias
+node_modules/
+vendor/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores / IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+nbproject/
+
+# Archivos temporales y de log
+*.log
+*.tmp
+*.bak
+
+# Configuración local
+.env
+.env.local
+
+# Capturas locales (no se suben al repo)
+screenshots/
