@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor-IA | Tu copiloto inteligente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="brand">
+            <img src="assets/images/logo.png" alt="Monitor-IA Logo" class="brand-logo">
+            <div class="brand-text">
+                <h2>MONITOR-IA</h2>
+                <span>by SecureIT</span>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <a href="#inicio" id="btnInicio">Inicio</a>
+            <a href="#funcionalidades" id="btnFuncionalidades">Funcionalidades</a>
+            <a href="#demostracion" id="btnDemostracion">Demostración</a>
+            
+            <div id="menuVisitante" class="nav-auth">
+                <a href="login.html" id="btnAbrirLogin">Iniciar Sesión</a>
+                <a href="registro.html" class="nav-btn" id="btnAbrirRegistroNav">Registrar</a>
+            </div>
+
+            <div id="menuUsuario" class="nav-auth" style="display: none;">
+                <span id="nombrePerfil" class="perfil-text"></span>
+                <a href="dashboard.html" class="nav-btn-outline">Dashboard</a>
+                <button class="nav-btn-danger" id="btnCerrarSesion">Salir</button>
+            </div>
+        </nav>
+    </header>
+
+    <script src="assets/scripts/index.js"></script>
+</body>
+</html>
