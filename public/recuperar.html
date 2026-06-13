@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña | Monitor-IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/styles.css">
+</head>
+<body class="auth-page">
+
+    <!-- Panel izquierdo: branding -->
+    <div class="auth-branding">
+        <a href="index.html" class="auth-brand-link">
+            <img src="assets/images/logo.png" alt="Monitor-IA Logo" class="auth-logo">
+            <div class="auth-brand-text">
+                <span class="auth-brand-name">MONITOR-IA</span>
+                <span class="auth-brand-sub">by SecureIT</span>
+            </div>
+        </a>
+        <div class="auth-branding-body">
+            <h2>No te preocupes, te ayudamos a recuperar el acceso.</h2>
+            <p>Ingresa tu correo registrado y te enviaremos un enlace para restablecer tu contraseña en segundos.</p>
+        </div>
+    </div>
+
+    <!-- Panel derecho: formulario -->
+    <div class="auth-form-panel">
+        <div class="auth-form-box">
+
+            <div class="auth-form-header">
+                <h1>Recuperar Contraseña</h1>
+                <p>Ingresa el correo asociado a tu cuenta</p>
+            </div>
+
+            <form id="formRecuperar">
+                <div class="auth-field">
+                    <label for="recEmail">Correo electrónico</label>
+                    <input type="email" id="recEmail" placeholder="tu@correo.com" required>
+                </div>
+                <button type="submit" class="primary-btn w-100 mt-20">Enviar enlace de recuperación</button>
+            </form>
+
+            <p id="msgRecuperar" class="msg-alert"></p>
+
+            <p class="auth-switch-text" style="margin-top: 24px;">
+                <a href="login.html">← Volver a Iniciar Sesión</a>
+            </p>
+
+        </div>
+    </div>
+
+    <script src="assets/scripts/recuperar.js"></script>
+</body>
+</html>

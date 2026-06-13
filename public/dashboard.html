@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control | Monitor-IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/styles.css">
+</head>
+<body class="dashboard-body">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h2>MONITOR-IA</h2>
+            <span id="userNameDisplay">Conductor</span>
+        </div>
+        <nav class="side-nav">
+            <button class="tab-btn active" data-target="monitoreo">Monitoreo Activo</button>
+            <button class="tab-btn" data-target="alertas">Alertas en Ruta</button>
+            <button class="tab-btn" data-target="estadisticas">Mis Viajes</button>
+            <button class="tab-btn" data-target="comunidad">Comunidad</button>
+            <button class="tab-btn" data-target="ajustes">Configuración</button>
+            <button class="tab-btn logout" id="btnSalirDash">Volver al Inicio</button>
+        </nav>
+    </aside>
+
+    <main class="dashboard-main">
+        
+        <section id="monitoreo" class="tab-content active">
+            <div class="dash-header">
+                <h1>Preparación de Viaje</h1>
+                <button class="primary-btn" id="btnIniciarViaje" style="background:#10B981;">Iniciar Monitoreo</button>
+            </div>
+            <div class="grid-2">
+                <div class="dash-card">
+                    <h3>Calibración Facial</h3>
+                    <div id="camView" class="camera-placeholder">
+                        <p id="camText">Cámara inactiva</p>
+                    </div>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="primary-btn" id="btnCalibrar">Calibrar Rostro</button>
+                        <button class="secondary-btn" id="btnVerificarRed">Verificar Red</button>
+                    </div>
+                </div>
+                <div class="dash-card">
+                    <h3>Diagnóstico de Cabina</h3>
+                    <ul class="check-list">
+                        <li id="chkLuz">Verificación de Luz</li>
+                        <li id="chkLente">Limpieza de Lente</li>
+                        <li id="chkHardware">Test de Hardware</li>
+                        <li id="chkBateria">Batería y Ahorro</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="alertas" class="tab-content">
+            <div class="dash-header">
+                <h1>Simulador de Conducción</h1>
+                <button class="secondary-btn" id="btnFinalizarViaje">Finalizar Viaje</button>
+            </div>
+            <div class="alert-box" id="pantallaAlerta">
+                Estado: Conducción Segura
+            </div>
+            <div class="grid-3 mt-20">
+                <button class="primary-btn" style="background:#F59E0B;" id="btnSimularBostezo">Simular Bostezo</button>
+                <button class="primary-btn" id="btnSimularMicrosueno">Simular Microsueño</button>
+                <button class="secondary-btn" id="btnSilenciarAlarma">Silenciar Alarma</button>
+            </div>
+            <div class="grid-2 mt-20">
+                <button class="secondary-btn" id="btnSugerirParada">Sugerir Parada</button>
+                <button class="secondary-btn" id="btnNotificarEmergencia">Notificar Emergencia</button>
+            </div>
+            <div class="dash-card mt-20">
+                <h3>Asistencia Adicional</h3>
+                <p style="color:#9CA3AF; margin-bottom:15px;">Monitor-IA funciona en segundo plano con un icono flotante mientras usas tu GPS.</p>
+                <button class="secondary-btn" id="btnVerEstiramientos">Ver Estiramientos</button>
+            </div>
+        </section>
+
+        <section id="estadisticas" class="tab-content">
+            <div class="dash-header">
+                <h1>Historial y Reportes</h1>
+                <button class="secondary-btn" id="btnExportarPDF">Exportar PDF</button>
+            </div>
+            <div class="table-container">
+                <table class="history-table">
+                    <thead>
+                        <tr><th>Fecha</th><th>Ruta</th><th>Duración</th><th>Eventos Detectados</th><th>Estado</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>14 Jun 2026</td><td>Lima - Ica</td><td>4h 20m</td><td>2 Bostezos</td><td><span class="badge yellow">Precaución</span></td></tr>
+                        <tr><td>12 Jun 2026</td><td>Callao - S. Anita</td><td>1h 45m</td><td>Ninguno</td><td><span class="badge green">Seguro</span></td></tr>
+                        <tr><td>10 Jun 2026</td><td>Lima - Huacho</td><td>2h 30m</td><td>Ninguno</td><td><span class="badge green">Seguro</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="premium-banner mt-20" id="btnPremiumBanner">
+                <h3>Actualiza a Premium</h3>
+                <p>Desbloquea el historial ilimitado, gráficos de tendencias y análisis de eficiencia de combustible.</p>
+            </div>
+        </section>
+
+        <section id="comunidad" class="tab-content">
+            <div class="dash-header">
+                <h1>Gamificación y Comunidad</h1>
+                <button class="secondary-btn" id="btnCompartirLogro">Compartir Logro</button>
+            </div>
+            <div class="grid-2">
+                <div class="dash-card">
+                    <h3>Tu Progreso</h3>
+                    <h2 style="font-size: 36px; margin: 10px 0; color: #10B981;">1,250 <span style="font-size:16px; color:#9CA3AF;">Puntos de Seguridad</span></h2>
+                    <p>Insignia actual: <strong>Protector de la vía</strong></p>
+                </div>
+                <div class="dash-card">
+                    <h3>Ranking Semanal Local</h3>
+                    <ul class="ranking-list">
+                        <li>1. Usuario Anon_84 - 1,400 pts</li>
+                        <li style="color:#FF2424; font-weight:bold;">2. Tú - 1,250 pts</li>
+                        <li>3. Carlos M. - 1,100 pts</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="ajustes" class="tab-content">
+            <div class="dash-header">
+                <h1>Ajustes del Sistema</h1>
+                <button class="primary-btn" id="btnGuardarCambios">Guardar Cambios</button>
+            </div>
+            <div class="grid-2">
+                <div class="dash-card">
+                    <h3>Preferencias de Monitoreo</h3>
+                    <div class="setting-item">
+                        <label>Sensibilidad de Cámara (Ej. Uso de lentes)</label>
+                        <select class="form-input"><option>Baja</option><option selected>Media</option><option>Alta</option></select>
+                    </div>
+                    <div class="setting-item mt-20">
+                        <label>Volumen de Alarma Crítica</label>
+                        <input type="range" min="1" max="100" value="80" style="width:100%;">
+                    </div>
+                    <div class="setting-item mt-20">
+                        <label>Voz de Alerta</label>
+                        <select class="form-input"><option>Femenina</option><option>Masculina</option></select>
+                    </div>
+                </div>
+                <div class="dash-card">
+                    <h3>Cuenta y Ecosistema</h3>
+                    <div class="setting-item">
+                        <label>Contacto de Emergencia</label>
+                        <input type="text" class="form-input" value="+51 987 654 321">
+                    </div>
+                    <div class="mt-20" style="display:flex; flex-direction:column; gap:10px;">
+                        <button class="secondary-btn text-left" id="btnVincularReloj">Vincular Reloj Inteligente</button>
+                        <button class="secondary-btn text-left" id="btnSincronizarCalendario">Sincronizar Calendario Laboral</button>
+                        <button class="secondary-btn text-left" id="btnContactarSoporte">Contactar Soporte</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="assets/scripts/dashboard.js"></script>
+</body>
+</html>
