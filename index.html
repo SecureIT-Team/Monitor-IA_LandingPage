@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor-IA | Tu copiloto inteligente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/assets/styles/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="brand">
+            <img src="public/assets/images/logo.png" alt="Monitor-IA Logo" class="brand-logo">
+            <div class="brand-text">
+                <h2>MONITOR-IA</h2>
+                <span>by SecureIT</span>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <a href="#inicio" id="btnInicio">Inicio</a>
+            <a href="#funcionalidades" id="btnFuncionalidades">Funcionalidades</a>
+            <a href="#demostracion" id="btnDemostracion">Demostración</a>
+            
+            <div id="menuVisitante" class="nav-auth">
+                <a href="public/login.html" id="btnAbrirLogin">Iniciar Sesión</a>
+                <a href="public/registro.html" class="nav-btn" id="btnAbrirRegistroNav">Registrar</a>
+            </div>
+
+            <div id="menuUsuario" class="nav-auth" style="display: none;">
+                <span id="nombrePerfil" class="perfil-text"></span>
+                <a href="public/dashboard.html" class="nav-btn-outline">Dashboard</a>
+                <button class="nav-btn-danger" id="btnCerrarSesion">Salir</button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="inicio" class="hero">
+        <section class="hero-content">
+            <h1>Conduce Seguro Con Inteligencia Artificial</h1>
+            <p>Monitor-IA detecta signos de somnolencia en tiempo real y te alerta antes de que sea demasiado tarde. Tu copiloto 100% offline.</p>
+            <a href="public/registro.html" class="primary-btn">Comenzar Ahora</a>
+        </section>
+        
+        <section class="hero-image">
+            <img src="public/assets/images/imagen1.jpg" alt="Conductor seguro usando Monitor-IA" class="main-img">
+        </section>
+    </main>
+
+    <section id="funcionalidades" class="section servicios">
+        <div class="section-title">
+            <h2>¿Cómo Funciona?</h2>
+            <p>Tecnología preventiva basada en tus necesidades de conducción</p>
+        </div>
+        <div class="cards">
+            <article class="card">
+                <img src="public/assets/images/imagen4.jpg" alt="Visión Computacional" class="card-img">
+                <h3>Visión IA</h3>
+                <p>Analiza tu rostro en tiempo real detectando parpadeo lento, cabeceos y bostezos continuos.</p>
+            </article>
+            <article class="card">
+                <img src="public/assets/images/imagen3.jpg" alt="Alertas Inteligentes" class="card-img">
+                <h3>Alertas Inmediatas</h3>
+                <p>Emisión inmediata de sonidos progresivos y vibración al detectar cualquier nivel de fatiga.</p>
+            </article>
+            <article class="card">
+                <img src="public/assets/images/imagen2.png" alt="Privacidad Garantizada" class="card-img">
+                <h3>Privacidad 100%</h3>
+                <p>Procesamiento biométrico totalmente local (offline). Nadie te graba, tus datos no salen de tu celular.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="demostracion" class="section portafolio">
+        <div class="section-title">
+            <h2>Videos Demostrativos</h2>
+            <p>Conoce a Monitor-IA en acción durante rutas reales</p>
+        </div>
+        <div class="video-grid">
+            <article class="video-card">
+                <div class="video-placeholder">
+                    <img src="public/assets/images/imagen4.jpg" alt="Calibración Facial">
+                    <span class="play-badge"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>
+                </div>
+                <div class="video-content">
+                    <h3>Calibración Facial</h3>
+                    <p>Mira lo rápido que es inicializar el sistema con un solo toque antes de arrancar.</p>
+                </div>
+            </article>
+            <article class="video-card">
+                <div class="video-placeholder">
+                    <img src="public/assets/images/imagen3.jpg" alt="Detección de Microsueños">
+                    <span class="play-badge"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>
+                </div>
+                <div class="video-content">
+                    <h3>Detección de Microsueños</h3>
+                    <p>Prueba de concepto de cómo el algoritmo detecta el parpadeo prolongado en milisegundos.</p>
+                </div>
+            </article>
+            <article class="video-card">
+                <div class="video-placeholder">
+                    <img src="public/assets/images/imagen5.jpg" alt="Modo Oscuro y Segundo Plano">
+                    <span class="play-badge"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>
+                </div>
+                <div class="video-content">
+                    <h3>Modo Oscuro & Segundo Plano</h3>
+                    <p>Usa tu GPS favorito mientras Monitor-IA te cuida silenciosamente de fondo.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Copyright &copy; 2026 - Monitor-IA by SecureIT. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#"><img src="public/assets/images/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="public/assets/images/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="public/assets/images/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="public/assets/scripts/index.js"></script>
+</body>
+</html>
