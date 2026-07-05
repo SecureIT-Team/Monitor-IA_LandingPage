@@ -25,7 +25,7 @@
     </aside>
 
     <main class="dashboard-main">
-        
+
         <section id="monitoreo" class="tab-content active">
             <div class="dash-header">
                 <h1>Preparación de Viaje</h1>
@@ -37,9 +37,17 @@
                     <div id="camView" class="camera-placeholder">
                         <p id="camText">Cámara inactiva</p>
                     </div>
-                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
                         <button class="primary-btn" id="btnCalibrar">Calibrar Rostro</button>
                         <button class="secondary-btn" id="btnVerificarRed">Verificar Red</button>
+                    </div>
+                    <div style="margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="secondary-btn" id="btnFueraMarco">Simular Rostro Fuera del Marco</button>
+                        <button class="secondary-btn" id="btnLuzInsuficiente">Simular Luz Insuficiente</button>
+                    </div>
+                    <div style="margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="secondary-btn" id="btnSimularLentes">Simular Uso de Lentes</button>
+                        <button class="secondary-btn" id="btnSimularMascarilla">Simular Uso de Mascarilla</button>
                     </div>
                 </div>
                 <div class="dash-card">
@@ -50,6 +58,25 @@
                         <li id="chkHardware">Test de Hardware</li>
                         <li id="chkBateria">Batería y Ahorro</li>
                     </ul>
+                    <button class="secondary-btn mt-20 w-100" id="btnModoAvion">Simular Modo Avión (Procesamiento Local)</button>
+                </div>
+            </div>
+            <div class="grid-2 mt-20">
+                <div class="dash-card">
+                    <h3>Monitoreo en Segundo Plano</h3>
+                    <p style="color:#9CA3AF; margin-bottom:15px;">Minimiza Monitor-IA y sigue usando tu navegador GPS sin perder el análisis facial.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="secondary-btn" id="btnSimularSegundoPlano">Enviar a Segundo Plano</button>
+                        <button class="secondary-btn" id="btnVerNotificacionPersistente">Ver Notificación Persistente</button>
+                    </div>
+                </div>
+                <div class="dash-card">
+                    <h3>Persistencia de Datos</h3>
+                    <p style="color:#9CA3AF; margin-bottom:15px;">Tu progreso se respalda automáticamente durante el viaje activo.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="secondary-btn" id="btnSimularCierreForzado">Simular Cierre Forzado</button>
+                        <button class="secondary-btn" id="btnSimularReinicio">Simular Reinicio del Equipo</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -68,8 +95,28 @@
                 <button class="secondary-btn" id="btnSilenciarAlarma">Silenciar Alarma</button>
             </div>
             <div class="grid-2 mt-20">
-                <button class="secondary-btn" id="btnSugerirParada">Sugerir Parada</button>
+                <button class="secondary-btn" id="btnBostezoAislado">Simular Bostezo Aislado</button>
+                <button class="secondary-btn" id="btnSimular4Horas">Simular 4 Horas de Manejo</button>
+            </div>
+            <div class="grid-2 mt-20">
+                <button class="secondary-btn" id="btnSugerirParada">Buscar Zonas de Parqueo</button>
+                <button class="secondary-btn" id="btnBuscarGrifos">Buscar Grifos y Servicios</button>
+            </div>
+            <div class="grid-2 mt-20">
                 <button class="secondary-btn" id="btnNotificarEmergencia">Notificar Emergencia</button>
+                <button class="secondary-btn" id="btnPerdidaRostro">Simular Pérdida de Rostro</button>
+            </div>
+            <div class="grid-2 mt-20">
+                <button class="secondary-btn" id="btnParpadeoNatural">Simular Parpadeo Natural</button>
+                <button class="secondary-btn" id="btnParpadeoProlongado">Simular Parpadeo Prolongado</button>
+            </div>
+            <div class="grid-2 mt-20">
+                <button class="secondary-btn" id="btnCabeceoPeligroso">Simular Cabeceo Peligroso</button>
+                <button class="secondary-btn" id="btnMovimientoBreve">Simular Movimiento Breve de Cabeza</button>
+            </div>
+            <div class="grid-2 mt-20">
+                <button class="secondary-btn" id="btnMiradaDesviada">Simular Mirada Desviada</button>
+                <button class="secondary-btn" id="btnRetornoMirada">Simular Retorno Rápido de Mirada</button>
             </div>
             <div class="dash-card mt-20">
                 <h3>Asistencia Adicional</h3>
@@ -83,17 +130,40 @@
                 <h1>Historial y Reportes</h1>
                 <button class="secondary-btn" id="btnExportarPDF">Exportar PDF</button>
             </div>
-            <div class="table-container">
+            <div class="dash-card mb-10" id="resumenViajeCard">
+                <h3>Resumen del Último Viaje</h3>
+                <p id="resumenTexto" style="color:#9CA3AF;">Finaliza un viaje desde la pestaña "Alertas en Ruta" para ver aquí tu resumen.</p>
+                <div id="resumenDatos" style="display:none; margin-top:10px;">
+                    <p style="color:#D1D5DB;">Tiempo conducido: <strong id="resumenTiempo">00:00</strong></p>
+                    <p style="color:#D1D5DB; margin-bottom:10px;">Eventos críticos detectados: <strong id="resumenEventos">0</strong></p>
+                    <span id="resumenBadge" class="badge green">Viaje Perfecto</span>
+                </div>
+            </div>
+            <div class="table-container mt-20">
                 <table class="history-table">
                     <thead>
                         <tr><th>Fecha</th><th>Ruta</th><th>Duración</th><th>Eventos Detectados</th><th>Estado</th></tr>
                     </thead>
-                    <tbody>
-                        <tr><td>14 Jun 2026</td><td>Lima - Ica</td><td>4h 20m</td><td>2 Bostezos</td><td><span class="badge yellow">Precaución</span></td></tr>
-                        <tr><td>12 Jun 2026</td><td>Callao - S. Anita</td><td>1h 45m</td><td>Ninguno</td><td><span class="badge green">Seguro</span></td></tr>
-                        <tr><td>10 Jun 2026</td><td>Lima - Huacho</td><td>2h 30m</td><td>Ninguno</td><td><span class="badge green">Seguro</span></td></tr>
+                    <tbody id="historialBody">
+                        <tr data-locked="false" data-month="2026-06"><td>14 Jun 2026</td><td>Lima - Ica</td><td>4h 20m</td><td>2 Bostezos</td><td><span class="badge yellow">Precaución</span></td></tr>
+                        <tr data-locked="false" data-month="2026-06"><td>12 Jun 2026</td><td>Callao - S. Anita</td><td>1h 45m</td><td>Ninguno</td><td><span class="badge green">Seguro</span></td></tr>
+                        <tr data-locked="false" data-month="2026-06"><td>10 Jun 2026</td><td>Lima - Huacho</td><td>2h 30m</td><td>Ninguno</td><td><span class="badge green">Seguro</span></td></tr>
+                        <tr data-locked="false" data-month="2026-06"><td>08 Jun 2026</td><td>Lima - Cañete</td><td>2h 10m</td><td>1 Cabeceo</td><td><span class="badge yellow">Precaución</span></td></tr>
+                        <tr data-locked="false" data-month="2026-05"><td>29 May 2026</td><td>Lima - Chosica</td><td>1h 05m</td><td>Ninguno</td><td><span class="badge green">Seguro</span></td></tr>
+                        <tr data-locked="true" data-month="2026-05"><td>15 May 2026</td><td>Lima - Pisco</td><td>3h 40m</td><td>Ninguno</td><td><span class="badge locked">🔒 Premium</span></td></tr>
+                        <tr data-locked="true" data-month="2026-04"><td>22 Abr 2026</td><td>Lima - Trujillo</td><td>8h 15m</td><td>3 Bostezos</td><td><span class="badge locked">🔒 Premium</span></td></tr>
+                        <tr data-locked="true" data-month="2026-04"><td>02 Abr 2026</td><td>Lima - Arequipa</td><td>15h 30m</td><td>1 Microsueño</td><td><span class="badge locked">🔒 Premium</span></td></tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="mt-20" style="display:flex; gap:15px; align-items:center; flex-wrap:wrap;">
+                <select class="form-input" id="selectFiltroMes" style="max-width:220px;" disabled>
+                    <option value="todos">Todos los meses</option>
+                    <option value="2026-06">Junio 2026</option>
+                    <option value="2026-05">Mayo 2026</option>
+                    <option value="2026-04">Abril 2026</option>
+                </select>
+                <button class="secondary-btn" id="btnActivarPremium">Simular Cuenta Premium</button>
             </div>
             <div class="premium-banner mt-20" id="btnPremiumBanner">
                 <h3>Actualiza a Premium</h3>
@@ -133,22 +203,55 @@
                     <h3>Preferencias de Monitoreo</h3>
                     <div class="setting-item">
                         <label>Sensibilidad de Cámara (Ej. Uso de lentes)</label>
-                        <select class="form-input"><option>Baja</option><option selected>Media</option><option>Alta</option></select>
+                        <select class="form-input" id="selectSensibilidad">
+                            <option value="baja">Baja</option>
+                            <option value="media" selected>Media</option>
+                            <option value="alta">Alta</option>
+                        </select>
+                        <button class="secondary-btn mt-20 w-100" id="btnRestaurarSensibilidad">Restaurar Valores de Fábrica</button>
                     </div>
                     <div class="setting-item mt-20">
                         <label>Volumen de Alarma Crítica</label>
-                        <input type="range" min="1" max="100" value="80" style="width:100%;">
+                        <input type="range" id="rangoVolumen" min="1" max="100" value="80" style="width:100%;">
+                        <button class="secondary-btn mt-20 w-100" id="btnProbarSonido">Probar Sonido</button>
                     </div>
                     <div class="setting-item mt-20">
                         <label>Voz de Alerta</label>
                         <select class="form-input"><option>Femenina</option><option>Masculina</option></select>
                     </div>
+                    <div class="setting-item mt-20">
+                        <label>Tema de la Interfaz (Automático según horario)</label>
+                        <div style="display:flex; gap:10px; flex-wrap: wrap;">
+                            <button class="secondary-btn" id="btnSimularNocturno">Simular Horario Nocturno</button>
+                            <button class="secondary-btn" id="btnSimularDiurno">Simular Horario Diurno</button>
+                        </div>
+                    </div>
+                    <div class="setting-item mt-20">
+                        <label>Modo de Ahorro de Energía</label>
+                        <div style="display:flex; gap:10px; flex-wrap: wrap;">
+                            <button class="secondary-btn" id="btnSimularInactividad">Simular 60s de Inactividad</button>
+                            <button class="secondary-btn" id="btnSimularSuspension">Simular Bloqueo de Suspensión</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="dash-card">
                     <h3>Cuenta y Ecosistema</h3>
                     <div class="setting-item">
+                        <label>Nombre Completo</label>
+                        <input type="text" class="form-input" id="inputNombrePerfil" value="">
+                    </div>
+                    <div class="setting-item mt-20">
+                        <label>Tipo de Vehículo</label>
+                        <select class="form-input" id="selectTipoVehiculo">
+                            <option value="Auto">Auto</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Camioneta">Camioneta</option>
+                            <option value="Moto">Moto</option>
+                        </select>
+                    </div>
+                    <div class="setting-item mt-20">
                         <label>Contacto de Emergencia</label>
-                        <input type="text" class="form-input" value="+51 987 654 321">
+                        <input type="text" class="form-input" id="inputContactoEmergencia" value="+51 987 654 321">
                     </div>
                     <div class="mt-20" style="display:flex; flex-direction:column; gap:10px;">
                         <button class="secondary-btn text-left" id="btnVincularReloj">Vincular Reloj Inteligente</button>
@@ -160,6 +263,159 @@
         </section>
 
     </main>
+
+    <!-- HU04: Tutorial de uso inicial -->
+    <div id="modalTutorial" class="modal">
+        <div class="modal-content">
+            <span class="close" id="btnOmitirTutorial">&times;</span>
+            <h2 id="tutorialTitulo">Bienvenido a Monitor-IA</h2>
+            <p class="modal-subtitle" id="tutorialTexto">Coloca tu celular en un soporte frente a ti, con la cámara enfocando tu rostro completo.</p>
+            <button class="primary-btn w-100 mt-20" id="btnSiguienteTutorial">Siguiente</button>
+            <button class="secondary-btn w-100 mt-20" id="btnOmitirTutorial2">Omitir</button>
+        </div>
+    </div>
+
+    <!-- HU09: Permiso de sistema (cámara) -->
+    <div id="modalPermisoCamara" class="modal">
+        <div class="modal-content">
+            <h2>Permiso de Cámara</h2>
+            <p class="modal-subtitle">Monitor-IA analiza tus puntos faciales de forma local. No se grabará ni almacenará ningún video antes de solicitar el permiso nativo de tu sistema.</p>
+            <button class="primary-btn w-100 mt-20" id="btnAceptarPermiso">Aceptar y Continuar</button>
+            <button class="secondary-btn w-100 mt-20" id="btnRechazarPermiso">Rechazar</button>
+        </div>
+    </div>
+
+    <!-- HU27: Sugerencia de parada estratégica -->
+    <div id="modalSugerenciaParada" class="modal">
+        <div class="modal-content">
+            <h2>Tiempo de Manejo Excedido</h2>
+            <p class="modal-subtitle">Llevas más de cuatro horas continuas al volante. Se recomienda una pausa para preservar tu salud y seguridad.</p>
+            <button class="primary-btn w-100 mt-20" id="btnTomarDescanso">Tomar Descanso</button>
+            <button class="secondary-btn w-100 mt-20" id="btnContinuarManejando">Continuar Manejando</button>
+        </div>
+    </div>
+
+    <!-- HU29 / HU30: Burbuja flotante de segundo plano -->
+    <div id="burbujaFlotante" class="bubble-indicator"></div>
+
+    <!-- HU31 / HU32: Superposición de ahorro de energía -->
+    <div id="dimOverlay" class="dim-overlay"></div>
+
+    <!-- ===== VISTAS ACCEPTANCE TESTS HU40-HU55 (puro front, prefijo at-) ===== -->
+    <!-- HU40: Contacto soporte -->
+    <div class="at-overlay" id="at-soporte">
+      <div class="at-modal">
+        <div class="at-modal-head"><h3><i class="fa-solid fa-headset"></i> Contactar Soporte</h3><button class="at-x" data-at-close="at-soporte">&times;</button></div>
+        <div class="at-modal-body">
+          <p>Reporta un fallo o propón una mejora. Tu mensaje viaja encriptado.</p>
+          <label>Asunto</label>
+          <input type="text" placeholder="Ej: La cámara no calibra">
+          <label>Mensaje</label>
+          <textarea placeholder="Describe el problema..."></textarea>
+          <div class="at-ok">Gracias por escribirnos. Tu mensaje fue enviado de forma encriptada.</div>
+        </div>
+        <div class="at-modal-foot"><button class="at-btn-cancel" data-at-close="at-soporte">Cancelar</button><button class="at-btn-send" data-at-ok="at-soporte">Enviar mensaje</button></div>
+      </div>
+    </div>
+
+    <!-- HU43: Compartir logro -->
+    <div class="at-overlay" id="at-compartir">
+      <div class="at-modal">
+        <div class="at-modal-head"><h3><i class="fa-solid fa-share-nodes"></i> Compartir Logro</h3><button class="at-x" data-at-close="at-compartir">&times;</button></div>
+        <div class="at-modal-body">
+          <p>Generamos una imagen optimizada con tu récord de seguridad.</p>
+          <div style="background:#111827;border:1px solid #374151;border-radius:10px;padding:20px;text-align:center;color:#fff;margin:12px 0;">
+            <div style="font-size:2rem;font-weight:800;color:#FF2424;">1,250 pts</div>
+            <div style="font-size:0.85rem;color:#9CA3AF;margin-top:4px;">Semana perfecta sin microsueños · Monitor-IA</div>
+          </div>
+          <div class="at-ok">Imagen adjuntada en la plataforma lista para enviar.</div>
+        </div>
+        <div class="at-modal-foot"><button class="at-btn-cancel" data-at-close="at-compartir">Cerrar</button><button class="at-btn-send" data-at-ok="at-compartir">Compartir en WhatsApp</button></div>
+      </div>
+    </div>
+
+    <!-- HU44: Emergencia -->
+    <div class="at-overlay" id="at-emergencia">
+      <div class="at-modal">
+        <div class="at-modal-head"><h3 style="color:#EF4444;"><i class="fa-solid fa-triangle-exclamation"></i> Notificar Emergencia</h3><button class="at-x" data-at-close="at-emergencia">&times;</button></div>
+        <div class="at-modal-body">
+          <p>Se enviará un <strong>SMS con tu ubicación actual</strong> a tu contacto de emergencia.</p>
+          <label>Contacto de emergencia</label>
+          <input type="text" value="+51 987 654 321" readonly>
+          <label>Ubicación detectada</label>
+          <input type="text" value="Lima, Miraflores (-12.12, -77.03)" readonly>
+          <div class="at-ok">SMS de emergencia enviado con tu ubicación al contacto +51 987 654 321.</div>
+        </div>
+        <div class="at-modal-foot"><button class="at-btn-cancel" data-at-close="at-emergencia">Cancelar</button><button class="at-btn-send" data-at-ok="at-emergencia" style="background:#EF4444;">Enviar SMS de emergencia</button></div>
+      </div>
+    </div>
+
+    <!-- HU46: Estiramientos -->
+    <div class="at-overlay" id="at-estiramientos">
+      <div class="at-modal">
+        <div class="at-modal-head"><h3><i class="fa-solid fa-person-walking"></i> Estiramientos Cervicales (3 min)</h3><button class="at-x" data-at-close="at-estiramientos">&times;</button></div>
+        <div class="at-modal-body">
+          <p>Sigue esta rutina breve durante tu parada para reducir la fatiga física:</p>
+          <ul class="at-list">
+            <li><i class="fa-solid fa-check-circle"></i> Rotación de cuello lenta — 30s por lado</li>
+            <li><i class="fa-solid fa-check-circle"></i> Inclinación lateral de cabeza — 30s por lado</li>
+            <li><i class="fa-solid fa-check-circle"></i> Elevación de hombros — 10 repeticiones</li>
+            <li><i class="fa-solid fa-check-circle"></i> Estiramiento de espalda — 45s</li>
+          </ul>
+          <div class="at-ok">¡Bien! Rutina completada. Registro de bienestar actualizado.</div>
+        </div>
+        <div class="at-modal-foot"><button class="at-btn-cancel" data-at-close="at-estiramientos">Cerrar</button><button class="at-btn-send" data-at-ok="at-estiramientos">Marcar como completado</button></div>
+      </div>
+    </div>
+
+    <!-- HU48: Calendario -->
+    <div class="at-overlay" id="at-calendario">
+      <div class="at-modal">
+        <div class="at-modal-head"><h3><i class="fa-solid fa-calendar-days"></i> Sincronizar Calendario Laboral</h3><button class="at-x" data-at-close="at-calendario">&times;</button></div>
+        <div class="at-modal-body">
+          <p>Vincula tu agenda para que Monitor-IA te sugiera iniciar el monitoreo al salir del trabajo.</p>
+          <label>Proveedor de calendario</label>
+          <select><option>Google Calendar</option><option>Outlook</option><option>Apple Calendar</option></select>
+          <label>Evento laboral detectado</label>
+          <input type="text" value="Guardia médica — Finaliza 18:00" readonly>
+          <div class="at-ok">Calendario vinculado. Te recordaremos iniciar el monitoreo al finalizar la guardia.</div>
+        </div>
+        <div class="at-modal-foot"><button class="at-btn-cancel" data-at-close="at-calendario">Cancelar</button><button class="at-btn-send" data-at-ok="at-calendario">Vincular y guardar</button></div>
+      </div>
+    </div>
+
+    <!-- HU50: PDF -->
+    <div class="at-overlay" id="at-pdf">
+      <div class="at-modal">
+        <div class="at-modal-head"><h3><i class="fa-solid fa-file-pdf"></i> Reporte de Eficiencia y Seguridad</h3><button class="at-x" data-at-close="at-pdf">&times;</button></div>
+        <div class="at-modal-body">
+          <p>Resumen semanal vinculado a tus eventos de fatiga y consumo de combustible:</p>
+          <ul class="at-list">
+            <li><i class="fa-solid fa-gauge"></i> Eventos de fatiga: <strong>2</strong></li>
+            <li><i class="fa-solid fa-gas-pump"></i> Consumo estimado: <strong>8.2 gal</strong></li>
+            <li><i class="fa-solid fa-coins"></i> Ahorro por conducción segura: <strong>S/ 45</strong></li>
+          </ul>
+          <div class="at-ok">PDF generado. La descarga comenzará en breve...</div>
+        </div>
+        <div class="at-modal-foot"><button class="at-btn-cancel" data-at-close="at-pdf">Cerrar</button><button class="at-btn-send" data-at-ok="at-pdf">Descargar PDF</button></div>
+      </div>
+    </div>
+
+    <!-- HU54: Reloj vestible -->
+    <div class="at-overlay" id="at-reloj">
+      <div class="at-modal">
+        <div class="at-modal-head"><h3><i class="fa-solid fa-watch"></i> Vincular Reloj Inteligente</h3><button class="at-x" data-at-close="at-reloj">&times;</button></div>
+        <div class="at-modal-body">
+          <p>Dispositivos cercanos detectados por Bluetooth. Integraremos tu frecuencia cardíaca al algoritmo.</p>
+          <ul class="at-list">
+            <li><i class="fa-solid fa-check-circle" style="color:#10B981"></i> Galaxy Watch 6 detectado</li>
+            <li><i class="fa-solid fa-check-circle" style="color:#10B981"></i> Mi Band 8 detectada</li>
+          </ul>
+          <div class="at-ok">Galaxy Watch 6 conectado. Frecuencia cardíaca integrada al algoritmo.</div>
+        </div>
+        <div class="at-modal-foot"><button class="at-btn-cancel" data-at-close="at-reloj">Cerrar</button><button class="at-btn-send" data-at-ok="at-reloj">Conectar Galaxy Watch 6</button></div>
+      </div>
+    </div>
 
     <script src="assets/scripts/dashboard.js"></script>
 </body>

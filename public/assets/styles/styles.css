@@ -1246,45 +1246,135 @@ body.auth-page {
     }
 }
 
-/* --- VIDEO PLACEHOLDERS (videos no incluidos en el repositorio por peso) --- */
-.video-placeholder {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #1F2937;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
+/* --- BURBUJA FLOTANTE (Monitoreo en segundo plano) --- */
+.bubble-indicator {
+    display: none;
     align-items: center;
     justify-content: center;
-}
-
-.video-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.7;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.video-card:hover .video-placeholder img {
-    opacity: 0.5;
-    transform: scale(1.03);
-}
-
-.play-badge {
-    position: absolute;
-    width: 64px;
-    height: 64px;
-    background: rgba(255, 36, 36, 0.9);
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 46px;
+    height: 46px;
+    background-color: #10B981;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 24px rgba(255, 36, 36, 0.4);
-    transition: transform 0.3s ease;
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.5);
+    cursor: pointer;
+    z-index: 300;
 }
 
-.video-card:hover .play-badge {
-    transform: scale(1.1);
+/* --- VIBRACIÓN DE ALARMA CRÍTICA --- */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
 }
+
+.alert-box.shake {
+    animation: shake 0.4s ease-in-out infinite;
+}
+
+/* --- MODO AHORRO DE ENERGÍA --- */
+.dim-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 250;
+}
+
+.dim-overlay.active {
+    opacity: 1;
+}
+
+/* --- HISTORIAL BLOQUEADO (cuenta gratuita) --- */
+.badge.locked {
+    background-color: rgba(156, 163, 175, 0.2);
+    color: #9CA3AF;
+    cursor: pointer;
+}
+
+#historialBody tr[data-locked="true"] {
+    opacity: 0.6;
+}
+/* ============================================================
+   VISTAS — ACCEPTANCE TESTS HU40-HU55 (puro front, prefijo at-)
+   ============================================================ */
+.at-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.at-overlay.active { display: flex; }
+.at-modal {
+    display: block;
+    background: #1F2937;
+    border: 1px solid #374151;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.at-modal-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid #374151;
+}
+.at-modal-head h3 { color: #fff; font-size: 1.15rem; margin: 0; }
+.at-x {
+    background: none; border: none; color: #9CA3AF;
+    font-size: 1.6rem; cursor: pointer; line-height: 1; padding: 0 4px;
+}
+.at-x:hover { color: #fff; }
+.at-modal-body { padding: 20px 24px; }
+.at-modal-body p { color: #D1D5DB; margin-bottom: 14px; font-size: 0.95rem; }
+.at-modal-body label { display: block; color: #9CA3AF; font-size: 0.85rem; margin: 10px 0 5px; }
+.at-modal-body input, .at-modal-body textarea, .at-modal-body select {
+    width: 100%; background: #111827; border: 1px solid #374151; color: #fff;
+    padding: 10px 12px; border-radius: 8px; font-family: inherit; font-size: 0.95rem;
+    outline: none; box-sizing: border-box;
+}
+.at-modal-body input:focus, .at-modal-body textarea:focus, .at-modal-body select:focus { border-color: #FF2424; }
+.at-modal-body textarea { resize: vertical; min-height: 80px; }
+.at-modal-foot {
+    display: flex; gap: 10px; justify-content: flex-end;
+    padding: 16px 24px; border-top: 1px solid #374151;
+}
+.at-btn-cancel {
+    background: transparent; color: #9CA3AF; border: 1px solid #374151;
+    padding: 10px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem;
+}
+.at-btn-cancel:hover { background: #374151; color: #fff; }
+.at-btn-send {
+    background: #FF2424; color: #fff; border: none;
+    padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem;
+}
+.at-btn-send:hover { background: #DC2626; }
+.at-ok {
+    display: none;
+    margin-top: 12px; padding: 10px 14px; border-radius: 8px;
+    font-size: 0.9rem; background: rgba(16, 185, 129, 0.15); color: #10B981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+}
+.at-ok.show { display: block; }
+.at-list { list-style: none; padding: 0; margin: 0; }
+.at-list li {
+    background: #111827; border: 1px solid #374151; border-radius: 8px;
+    padding: 10px 14px; margin-bottom: 8px; color: #D1D5DB; font-size: 0.92rem;
+    display: flex; align-items: center; gap: 10px;
+}
+.at-list li i { color: #FF2424; font-size: 1.1rem; }

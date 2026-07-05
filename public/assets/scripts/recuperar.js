@@ -13,11 +13,13 @@ if (formRecuperar) {
         const msg = document.querySelector("#msgRecuperar");
 
         if (usuarios.find(u => u.email === email)) {
+            /* HU03 - E01: Envío de enlace exitoso (válido por 15 minutos) */
             msg.style.color = "#10B981";
-            msg.innerText = "¡Mensaje enviado! Revisa la bandeja de tu correo electrónico.";
+            msg.innerText = "Enlace de recuperación enviado. Válido por 15 minutos.";
         } else {
+            /* HU03 - E02: Correo no registrado */
             msg.style.color = "#FF2424";
-            msg.innerText = "Ese correo no está registrado en el sistema.";
+            msg.innerText = "La cuenta no existe.";
         }
     });
 }
