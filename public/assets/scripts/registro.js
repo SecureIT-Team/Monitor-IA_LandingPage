@@ -3,6 +3,9 @@ function obtenerUsuarios() {
     return JSON.parse(localStorage.getItem('usuariosDb')) || [];
 }
 
+/* Validador de formato de correo (HU01 - E02) */
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 /* Registro con correo y contraseña */
 const formRegistro = document.querySelector("#formRegistro");
 if (formRegistro) {
@@ -11,6 +14,12 @@ if (formRegistro) {
         const nombre = document.querySelector("#regNombre").value.trim();
         const email = document.querySelector("#regEmail").value.trim();
         const password = document.querySelector("#regPassword").value;
+
+        /* HU01 - E02: Formato inválido de correo */
+        if (!emailRegex.test(email)) {
+            alert("Formato de correo inválido. Ingresar un correo válido.");
+            return;
+        }
 
         const usuarios = obtenerUsuarios();
 
@@ -24,7 +33,8 @@ if (formRegistro) {
             return;
         }
 
-        const nuevoUsuario = { nombre, email, password };
+        /* HU01 - E01: Registro exitoso */
+        const nuevoUsuario = { nombre, email, password, tutorialVisto: false, permisoCamara: false };
         usuarios.push(nuevoUsuario);
         localStorage.setItem('usuariosDb', JSON.stringify(usuarios));
         localStorage.setItem('currentUser', JSON.stringify(nuevoUsuario));
@@ -41,7 +51,9 @@ redesBtns.forEach(btn => {
         const red = btn.getAttribute("data-red");
         const usuarioSocial = {
             nombre: `Usuario de ${red}`,
-            email: `user@${red.toLowerCase()}.com`
+            email: `user@${red.toLowerCase()}.com`,
+            tutorialVisto: false,
+            permisoCamara: false
         };
         localStorage.setItem('currentUser', JSON.stringify(usuarioSocial));
         window.location.href = 'dashboard.html';
